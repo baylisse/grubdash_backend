@@ -7,7 +7,8 @@ const methodNotAllowed = require("../errors/methodNotAllowed");
 router
     .route("/")
     .post(controller.create)
-    .get(controller.list);
+    .get(controller.list)
+    .all(methodNotAllowed);
 
 router
     .route("/:dishId")

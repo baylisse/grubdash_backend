@@ -110,15 +110,14 @@ function update(req, res, next){
         dishes,
     }
 
-    const order = orders.find(o => o.id === orderId)
+    const order = res.locals.order
     Object.assign(order, updatedOrder)
     
     res.status(200).json({ data: updatedOrder})
 }
 
 function destroy(req, res) {
-    const { orderId } = req.params;
-    const index = orders.findIndex((order) => order.id === orderId);
+    const index = orders.findIndex((order) => order.id === res.locals.order.id);
     if (index > -1) {
         orders.splice(index, 1);
     }

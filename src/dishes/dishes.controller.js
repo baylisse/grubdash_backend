@@ -85,7 +85,7 @@ function update(req, res, next) {
         image_url,
     }
 
-    const dish = dishes.find(d => d.id === dishId)
+    const dish = res.locals.dish
     Object.assign(dish, updatedDish)
     
     res.status(200).json({ data: updatedDish})
